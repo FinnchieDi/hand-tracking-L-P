@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 740f51a1ac4b42088297287229057627, type: 3}
   m_Name: Wave
   m_EditorClassIdentifier: 
-  m_HandShape: {fileID: 11400000, guid: f8cb17f8ab5fc8c4083750c7e3a19f97, type: 2}
+  m_HandShape: {fileID: 11400000, guid: 28cbbdff45b758a4fb139ca7c0ae628c, type: 2}
   m_RelativeOrientation:
     m_UserConditions:
     - m_HandAxis: 0
