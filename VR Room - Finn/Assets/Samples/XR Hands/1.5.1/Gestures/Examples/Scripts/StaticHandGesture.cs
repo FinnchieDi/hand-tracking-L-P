@@ -128,7 +128,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
 
         void Awake()
         {
-            m_BackgroundDefaultColor = m_Background.color;
+            //m_BackgroundDefaultColor = m_Background.color;
         }
 
         void OnEnable()
@@ -161,7 +161,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
             {
                 m_PerformedTriggered = false;
                 m_GestureEnded?.Invoke();
-                m_Background.color = m_BackgroundDefaultColor;
+                //m_Background.color = m_BackgroundDefaultColor;
             }
 
             m_WasDetected = detected;
@@ -173,7 +173,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
                 {
                     m_GesturePerformed?.Invoke();
                     m_PerformedTriggered = true;
-                    m_Background.color = m_BackgroundHiglightColor;
+                    //m_Background.color = m_BackgroundHiglightColor;
                 }
             }
 
