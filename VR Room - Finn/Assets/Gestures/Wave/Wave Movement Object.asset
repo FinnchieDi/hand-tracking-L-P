@@ -12,5 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce5e8aac444bbf40b2351e3877a845c, type: 3}
   m_Name: Wave Movement Object
   m_EditorClassIdentifier: 
-  waveThreshold: 0.05
-  resetTime: 1

@@ -70,27 +70,33 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
 
         void OnJointsUpdated(XRHandJointsUpdatedEventArgs eventArgs)
         {
+            if (m_HandTrackingEvents == null)
+            {
+                Debug.LogWarning("m_HandTrackingEvents is not assigned.");
+                return;
+            }
+
             if (!isActiveAndEnabled || Time.timeSinceLevelLoad < m_TimeOfLastConditionCheck + m_GestureDetectionInterval)
                 return;
 
-            bool shapeDetected =
-                m_HandTrackingEvents.handIsTracked &&
+            var shapeDetected = m_HandTrackingEvents.handIsTracked &&
                 ((m_HandShape != null && m_HandShape.CheckConditions(eventArgs)) ||
                 (m_HandPose != null && m_HandPose.CheckConditions(eventArgs)));
+            //
+            if (shapeDetected) Debug.Log("Pose Detected");
 
-
-            Debug.Log("Is hand tracked: " + m_HandTrackingEvents.handIsTracked);
-
-            //bool movementDetected =
-                //m_DynamicGesture == null || m_DynamicGesture.CheckMovement(eventArgs);
-            bool movementDetected = true;
-
+            bool movementDetected =
+                m_DynamicGesture == null ||
+                m_DynamicGesture.CheckMovement(eventArgs);
+            //bool movementDetected = true;
 
             bool gestureDetected = shapeDetected && movementDetected;
 
             if (!m_WasDetected && gestureDetected)
             {
                 m_HoldStartTime = Time.timeSinceLevelLoad;
+                //
+                Debug.Log("Gesture Detected");
 
             }
             else if (m_WasDetected && !gestureDetected)
@@ -115,10 +121,6 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
             }
 
             m_TimeOfLastConditionCheck = Time.timeSinceLevelLoad;
-
-            if (m_HandPose != null && m_HandPose.CheckConditions(eventArgs))
-                Debug.Log("Pose conditions met!");
-
         }
     }
     public abstract class XRDynamicHandGesture : ScriptableObject
@@ -126,7 +128,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
         public abstract bool CheckMovement(XRHandJointsUpdatedEventArgs eventArgs);
     }
 
-    
+
 }
 
 
