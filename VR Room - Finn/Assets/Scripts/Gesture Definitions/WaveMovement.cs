@@ -45,7 +45,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
             float smoothedX = Mathf.Lerp(lastWristX, currentX, smoothingFactor);
             float deltaX = smoothedX - lastWristX;
 
-            Debug.Log($"currentX: {currentX}, lastWristX: {lastWristX}, smoothedX: {smoothedX}, deltaX: {deltaX}");
+            //Debug.Log($"currentX: {currentX}, lastWristX: {lastWristX}, smoothedX: {smoothedX}, deltaX: {deltaX}");
 
             // Filter out tiny fluctuations that are likely just noise
             if (Mathf.Abs(deltaX) < jitterEpsilon)
